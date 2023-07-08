@@ -1,5 +1,5 @@
 // ----Recursive approach---------
-// Time complexity O(n) , space complexity O(n)
+// Time complexity O(n^2) , space complexity O(n)
 
 class Solution {
 public:
