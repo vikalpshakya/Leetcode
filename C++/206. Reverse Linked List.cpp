@@ -1,6 +1,5 @@
 // ----Recursive approach---------
 // Time complexity O(n^2) , space complexity O(n)
-
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
@@ -17,4 +16,19 @@ public:
 
         return newhead;
     }
-};
+}; // OPTIMIZED 
+
+// Time complexity O(n) , space complexity O(n)
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if(head==NULL || head->next == NULL){
+            return head;
+        }
+        ListNode* temp = head;
+        ListNode* newhead = reverseList(temp->next);
+        temp->next->next = head ; 
+        temp->next = NULL;
+        return newhead ; 
+    }
+}
