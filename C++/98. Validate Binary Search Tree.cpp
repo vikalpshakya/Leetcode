@@ -1,14 +1,5 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
+/*---------NAIVE APPROACH -------
+    TIME COMPLEXITY: O(n^H), SPACE COMPLEXITY: O(n)      */
 class Solution {
 public:
     int maximum(TreeNode* root){
@@ -26,5 +17,22 @@ public:
             return false;
         
         return isValidBST(root->left) and isValidBST(root->right);
+    }
+};
+/*----------OPTIMIZED APPROACH ----------------
+    Time Complexity: O(n) Space complexity O(n)    */
+class Solution {
+public:
+    bool isValidBST_helper(TreeNode* root,long long  min,long long  max ) {
+        if(!root) return true;  
+        if(root->val <= min || root->val >= max) return false;
+        bool isLeftOk = isValidBST_helper(root->left,min,root->val);
+        bool isRightOk = isValidBST_helper(root->right,root->val,max);
+        return isLeftOk && isRightOk;
+    }
+    bool isValidBST(TreeNode* root){
+        long long min = LLONG_MIN;
+        long long  max = LLONG_MAX;
+        return isValidBST_helper(root,min,max);
     }
 };
