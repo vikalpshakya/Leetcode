@@ -1,5 +1,5 @@
 class Solution {
-public: 
+public:  
 /* Naive Approach, Time complexity : O(logn) , space complexity : O(1) */
     bool isPowerOfTwo_brute(int n) {
         if(n==1||n==2){
