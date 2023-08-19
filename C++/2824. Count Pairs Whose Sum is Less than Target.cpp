@@ -1,3 +1,4 @@
+// Time complexity O(N^2) , Space complexity O(N)
 class Solution {
 public:
     int countPairs_help(vector<int>&nums , int target , int start){
@@ -12,4 +13,4 @@ public:
         return countPairs_help(nums,target,0);
     }
 };
-// TC O(N) SC O(N)
+
