@@ -1,7 +1,7 @@
 //     Time complexity O(N) space O(N)    //
 
 class Solution {
-public:
+public: 
     vector<vector<int>> levelOrder(TreeNode* root) {
         vector<vector<int>>ans;
         if(root==nullptr) return ans;
