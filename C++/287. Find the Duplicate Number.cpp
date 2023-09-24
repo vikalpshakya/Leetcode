@@ -25,5 +25,24 @@ public:
     }
     return 0;
     }
+// -------Approach 3 --------------//
+
+//    Time complexity: O(n), Space complexity: O(1)   //
+        int n = nums.size();
+        int slow = nums[0];
+        int fast = nums[nums[0]];
+
+        while(fast != slow){
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        }
+        fast = 0;
+        while(fast != slow){
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return fast;
+
+    }
 
 };
