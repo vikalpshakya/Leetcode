@@ -39,7 +39,6 @@ public:
 //  --------- MAIN FUNCTION ---------
     bool isPowerOfThree(int n){
         return isPowerOfThree_rec(n);
-        // return isPowerOfThree_iterative(n);
     }
 };
 
