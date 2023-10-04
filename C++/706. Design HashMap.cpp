@@ -35,3 +35,29 @@ public:
         }
     }
 };
+
+// ----------------------Approoach 2 ---------------------------------//
+
+// ---------Time complexity: O(1) [for each func] , Space complexity: O(n) [n= 10^6] ----------//
+class MyHashMap {
+    int arr[1000001];
+public:
+    MyHashMap() {
+        memset(arr,-1,sizeof(arr));
+    }
+    
+    void put(int key, int value) {
+        arr[key] = value;
+    }
+    
+    int get(int key) {
+        return arr[key];
+    }
+    
+    void remove(int key) {
+        arr[key] = -1;
+    }
+};
+
+
+
