@@ -1,9 +1,14 @@
 class Solution {
+
+//    Time complexity: O(logn), Space complexity: O(logn)
+
     bool solve_rec(int n){
         if(n == 1) return true;
         if(n%4 != 0 || n == 0) return false;
         return solve_rec(n/4);
     }
+// Time complexity: O(logn), Space complexity: O(1)
+
     bool solve_itr(int n){
         if(n==1||n==4) return true;
         
