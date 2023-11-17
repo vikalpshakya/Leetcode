@@ -1,5 +1,5 @@
 class Solution {
-public:
+public: 
 // TC: O(n) , SC O(n)
     bool isSameTree(TreeNode* p, TreeNode* q) {
 
