@@ -1,3 +1,5 @@
+// TC: O(n*n), Space comp: O(n*n)
+
 class Solution {
 private:
     bool isValid(int row, int col, int n) {
