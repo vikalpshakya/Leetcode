@@ -10,24 +10,14 @@
  * right(right) {}
  * };
  */
- 
+
 class Solution {
 public:
     void solve(TreeNode* root) {
         if (!root) return;
         
-        if (root->left && root->right)
-            swap(root->left, root->right);
-        else if (root->left) {
-            TreeNode* newRight = root->left;
-            root->right = newRight;
-            root->left = nullptr;
-        } 
-        else if (root->right) {
-            TreeNode* newLeft = root->right;
-            root->left = newLeft;
-            root->right = nullptr;
-        }
+        swap(root->left, root->right);
+
         solve(root->left);
         solve(root->right);
     }
