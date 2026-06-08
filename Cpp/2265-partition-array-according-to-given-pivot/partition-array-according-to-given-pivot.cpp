@@ -1,22 +1,28 @@
 class Solution {
 public:
+
+    // TWO PASS Solution
+
     vector<int> pivotArray(vector<int>& nums, int pivot) {
-        vector<int>ans;
-        for(auto i: nums) {
-            if(i < pivot) ans.push_back(i);
-        }
-
-        int i = ans.size();
-
-        for(auto it: nums) {
-            if( it == pivot) ans.push_back(it);
-        }
-
-        for(auto it: nums) {
-            if( it > pivot) ans.push_back(it);
-        }
         
-        // sort(ans.begin() + i , ans.end());
+        int n = nums.size();
+
+        int idx = 0, pivotCnt = 0;
+
+        vector<int>ans(n,pivot);
+
+        for(auto i: nums) {
+            if(i < pivot) ans[idx++] = i;
+            else if(i == pivot) pivotCnt++;
+        }
+
+        for(auto i: nums) {
+            if(i > pivot){
+                ans[idx + pivotCnt] = i;
+                idx++;
+            }
+        }
+
         return ans;
     }
 };
