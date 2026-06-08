@@ -1,25 +1,21 @@
 class Solution {
 public:
-
-    // TWO PASS Solution
+    // ONE PASS Solution
 
     vector<int> pivotArray(vector<int>& nums, int pivot) {
-        
+
         int n = nums.size();
 
-        int idx = 0, pivotCnt = 0;
+        vector<int> ans(n, pivot);
 
-        vector<int>ans(n,pivot);
+        int l = 0, r = n - 1;
 
-        for(auto i: nums) {
-            if(i < pivot) ans[idx++] = i;
-            else if(i == pivot) pivotCnt++;
-        }
-
-        for(auto i: nums) {
-            if(i > pivot){
-                ans[idx + pivotCnt] = i;
-                idx++;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] < pivot)
+                ans[l++] = nums[i];
+                
+            if (nums[n - i - 1] > pivot) {
+                ans[r--] = nums[n - i - 1];
             }
         }
 
