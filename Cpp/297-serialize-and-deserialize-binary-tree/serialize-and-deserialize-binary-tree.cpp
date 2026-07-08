@@ -9,7 +9,6 @@
  */
 class Codec {
 public:
-    vector<string> data;
     string serialize(TreeNode* root) {
         string ans = "";
         if (!root)
@@ -42,17 +41,18 @@ public:
                     q.push(nullptr);
             }
         }
-        // cout << ans;
         return ans;
     }
 
     TreeNode* deserialize(string str) {
+        vector<string> data;
+
         string curr = "";
         for (int i = 0; i < str.size(); i++) {
             if (str[i] != ',')
                 curr += str[i];
             else {
-                if(!curr.empty())
+                if (!curr.empty())
                     data.push_back(curr);
                 curr = "";
             }
@@ -64,14 +64,13 @@ public:
             data.push_back(curr);
 
         int n = data.size();
-        // cout << n << endl;
 
         int val = stoi(data[0]);
+
         TreeNode* head = new TreeNode(val);
         queue<TreeNode*> q;
-        q.push(head);
 
-        // cout << endl << head->val << endl;
+        q.push(head);
 
         for (int i = 0; !q.empty() && i < n; i++) {
             TreeNode* front = q.front();
@@ -84,7 +83,7 @@ public:
                 if (data[leftChild] != "#") {
                     int num = stoi(data[leftChild]);
                     TreeNode* left = new TreeNode(num);
-                    if(front)
+                    if (front)
                         front->left = left;
                     q.push(left);
                 }
@@ -93,7 +92,7 @@ public:
                 if (data[rightChild] != "#") {
                     int num = stoi(data[rightChild]);
                     TreeNode* right = new TreeNode(num);
-                    if(front)
+                    if (front)
                         front->right = right;
                     q.push(right);
                 }
@@ -102,7 +101,3 @@ public:
         return head;
     }
 };
-
-// Your Codec object will be instantiated and called as such:
-// Codec ser, deser;
-// TreeNode* ans = deser.deserialize(ser.serialize(root));
